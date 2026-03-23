@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: publicidade_frontend
+    ports:
+      - "4200:80"
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    external: true

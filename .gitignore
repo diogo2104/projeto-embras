@@ -1,0 +1,19 @@
+# FRONTEND
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/coverage/
+
+# BACKEND
+backend/log/*
+backend/tmp/*
+backend/storage/*
+backend/.kamal/
+
+# SENSITIVE
+backend/config/master.key
+.env
+
+# SYSTEM
+.DS_Store
+Thumbs.db

@@ -1,0 +1,44 @@
+services:
+  db:
+    image: postgres:16
+    container_name: publicidade_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: backend_development
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: publicidade_backend
+    working_dir: /app
+    volumes:
+      - ./backend:/app
+      - rails_storage:/app/storage
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      RAILS_ENV: development
+      APP_HOST: localhost
+      APP_PORT: 3000
+    command: bash -c "bundle install && rm -f tmp/pids/server.pid && rails db:create db:migrate db:seed && rails s -b 0.0.0.0"
+
+  frontend:
+    build: ./frontend
+    container_name: publicidade_frontend
+    ports:
+      - "4200:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  rails_storage:

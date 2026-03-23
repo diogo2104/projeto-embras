@@ -1,0 +1,106 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Gerenciamento de Publicidade</h1>
+
+    <button
+      pButton
+      type="button"
+      label="Nova publicidade"
+      icon="pi pi-plus-circle"
+      class="new-button"
+      (click)="openCreateModal()">
+    </button>
+  </div>
+
+  <div class="toolbar">
+    <p-dropdown
+      [options]="estadoOptions"
+      optionLabel="label"
+      optionValue="value"
+      placeholder="Visualizar todos os Estados"
+      [showClear]="true"
+      [(ngModel)]="estadoSelecionado"
+      (onChange)="filtrar()">
+    </p-dropdown>
+
+    <span class="search-box">
+      <i class="pi pi-search"></i>
+      <input
+        pInputText
+        type="text"
+        placeholder="Pesquisar publicação"
+        [(ngModel)]="termoBusca"
+        (input)="filtrar()" />
+    </span>
+  </div>
+
+  <div class="board">
+    <div class="board-header">
+      <h2>Publicidades</h2>
+
+      <button
+        pButton
+        type="button"
+        label="Adicionar publicação"
+        icon="pi pi-plus"
+        class="add-inline-button"
+        (click)="openCreateModal()">
+      </button>
+    </div>
+
+    <div class="posts-board" *ngIf="publicidadesFiltradas?.length; else semPosts">
+      <div class="post-card" *ngFor="let item of publicidadesFiltradas">
+        <div class="post-left">
+          <img
+            [src]="item.imagem_url || item.imagemUrl || 'assets/placeholder-image.png'"
+            alt="Publicidade"
+            class="post-image" />
+        </div>
+
+        <div class="post-center">
+          <h3>{{ item.titulo }}</h3>
+          <p>{{ item.descricao }}</p>
+
+          <div class="chips">
+            <span class="chip" *ngFor="let estado of item.estados">
+              {{ estado.sigla || estado.descricao }}
+            </span>
+          </div>
+        </div>
+
+        <div class="post-right">
+          <span class="status-badge" *ngIf="item.ativa">Publicidade atual</span>
+
+          <small>
+            {{ item.ativa ? ('Ativo até ' + item.dt_fim) : ('Será publicado em ' + item.dt_inicio) }}
+          </small>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-ellipsis-v"
+            class="menu-button"
+            (click)="abrirMenu(item)">
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-template #semPosts>
+      <div class="empty-state">
+        <i class="pi pi-image empty-icon"></i>
+        <h3>Nenhuma publicidade cadastrada</h3>
+        <p>Clique no botão abaixo para adicionar sua primeira publicação.</p>
+
+        <button
+          pButton
+          type="button"
+          label="Adicionar publicação"
+          icon="pi pi-plus"
+          class="empty-button"
+          (click)="openCreateModal()">
+        </button>
+      </div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  descricao: MyText
+  botao_link: MyString
+  titulo_botao_link: MyString
+  dt_inicio: 2026-03-21
+  dt_fim: 2026-03-21
+
+two:
+  titulo: MyString
+  descricao: MyText
+  botao_link: MyString
+  titulo_botao_link: MyString
+  dt_inicio: 2026-03-21
+  dt_fim: 2026-03-21
