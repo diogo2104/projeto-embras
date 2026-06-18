@@ -14,7 +14,7 @@ services:
   backend:   
     build: ./backend
     container_name: publicidade_backend
-    working_dir: /app
+    working_dir: /app 
     volumes:
       - ./backend:/app
       - rails_storage:/app/storage
