@@ -5,7 +5,7 @@ Sistema desenvolvido como teste técnico para o Grupo Embras, com o objetivo de 
 
 Tecnologias utilizadas
 - Angular + PrimeNG (Frontend)
-- Ruby on Rails (Backend)
+- Ruby on Rails (Backend) 
 - PostgreSQL (Banco de dados)
 - Docker + Docker Compose
 
