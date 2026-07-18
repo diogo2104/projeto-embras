@@ -11,7 +11,7 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data 
       
-  backend:           
+  backend:          
     build: ./backend  
     container_name: publicidade_backend
     working_dir: /app 
