@@ -3,7 +3,7 @@ services:
     image: postgres:16
     container_name: publicidade_db
     environment:
-      POSTGRES_USER: postgres
+      POSTGRES_USER: postgres 
       POSTGRES_PASSWORD: postgres    
       POSTGRES_DB: backend_developmente  
     ports:
